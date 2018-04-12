@@ -20,7 +20,7 @@ module SpreeMultiDomain
     end
 
     def add_current_store_id_to_params
-      params[:current_store_id] = current_store.try(:id) unless current_store.nil?
+      params[:current_store_id] = current_store.try(:id) if current_store.present?
     end
   end
 end
