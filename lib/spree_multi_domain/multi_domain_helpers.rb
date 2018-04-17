@@ -8,6 +8,10 @@ module SpreeMultiDomain
       receiver.send :helper_method, :current_store
       receiver.send :helper_method, :current_tracker
     end
+    
+    def current_store
+      @current_store ||= Spree::Store.current(request.env['SERVER_NAME'])
+    end
 
     def current_tracker
       @current_tracker ||= Spree::Tracker.current(request.env['SERVER_NAME'])
